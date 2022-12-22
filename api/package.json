@@ -6,6 +6,7 @@
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
     "@types/joi": "^17.2.3",
+    "@types/mime": "^3.0.1",
     "@types/node": "^18.11.17",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
@@ -16,6 +17,7 @@
   "dependencies": {
     "aws-sdk": "^2.1281.0",
     "joi": "^17.7.0",
+    "mime": "^3.0.0",
     "uuid": "^9.0.0"
   }
 }
