@@ -24,5 +24,8 @@
     "joi": "^17.7.0",
     "mime": "^3.0.0",
     "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "dev": "ts-node-dev ./src/index.ts"
   }
 }
