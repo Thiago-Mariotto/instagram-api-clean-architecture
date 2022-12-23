@@ -2,13 +2,13 @@ import joi from 'joi';
 import Identifier from './Identifier';
 
 export default class User {
-  identifier: Identifier;
+  id: string;
   username: string;
   email: string;
   password: string;
 
   constructor(username: string, email: string, password: string) {
-    this.identifier = new Identifier();
+    this.id = new Identifier().id;
     this.username = username;
     this.email = email;
     this.passIsValid(password);
