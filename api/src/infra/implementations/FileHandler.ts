@@ -6,6 +6,18 @@ export default class FileHandler {
   private storage: any;
 
   constructor() {
+    this.checkFolderExists();
+  }
+
+  private checkFolderExists() {
+    const checkDirectory = path.resolve('tmp', 'uploads');
+    if (!fs.existsSync(checkDirectory)) {
+      console.log('creating uploads temp directory');
+      fs.mkdirSync(checkDirectory, { recursive: true });
+    }
+  }
+
+  public upload() {
     this.storage = multer.diskStorage({
       destination: function (req, file, cb) {
         cb(null, path.resolve('tmp', 'uploads'));
@@ -14,20 +26,16 @@ export default class FileHandler {
         const uniqueSufix = `${Date.now()}`;
         const tmpFileName = `${uniqueSufix}-${file.originalname}`;
         cb(null, tmpFileName);
+        req.body.tmpFileName = tmpFileName;
+        req.body.tmpFilePath = path.resolve('tmp', 'uploads', tmpFileName);
       }
     });
-  }
-
-  public upload() {
-    this.checkFolderExists();
     return multer({ storage: this.storage });
   }
 
-  private checkFolderExists() {
-    console.log('creating directory');
-    const checkDirectory = path.resolve('tmp', 'uploads');
-    if (!fs.existsSync(checkDirectory)) {
-      fs.mkdirSync(checkDirectory, { recursive: true });
-    }
+  public removeUploadedFile(filePath: string) {
+    fs.unlink(filePath, (err) => {
+      if (err) throw new Error('failed to remove uploaded file');
+    });
   }
 }
