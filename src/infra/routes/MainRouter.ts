@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import PhotoMemoryRepository from '../repository/memory/PhotoMemoryRepository';
-import UserMemoryRepository from '../repository/memory/UserMemoryRepository';
+import MySQLPromiseAdapter from '../database/MySQLPromiseAdapter';
+import PhotoDatabaseRepository from '../repository/database/PhotoDatabaseRepository';
+import UserDatabaseRepository from '../repository/database/UserDatabaseRepository';
 import UserRouter from './UserRouter';
 
 
@@ -9,8 +10,9 @@ export default class MainRouter {
 
   constructor() {
     this.route = Router();
-    const userRepository = new UserMemoryRepository();
-    const photoRepository = new PhotoMemoryRepository();
+    const connection = new MySQLPromiseAdapter();
+    const userRepository = new UserDatabaseRepository(connection);
+    const photoRepository = new PhotoDatabaseRepository(connection);
     const userRouter = new UserRouter(userRepository, photoRepository);
     this.route.use(userRouter.route);
   }
