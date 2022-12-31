@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql:8
+    container_name: mysql_insta
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=instagram
+    ports:
+      - 3306:3306
+    volumes:
+      - ./misc/mysql-seeder:/docker-entrypoint-initdb.d
