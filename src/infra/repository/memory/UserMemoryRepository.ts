@@ -6,6 +6,12 @@ export default class UserMemoryRepository implements UserRepository {
   constructor() {
     this.users = [];
   }
+  updateUser(user: User): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  removeUser(id: string): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
 
   async getUsers(): Promise<User[]> {
     return this.users;
