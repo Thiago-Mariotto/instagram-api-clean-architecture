@@ -8,8 +8,8 @@ export default class PhotographyMemoryRepository implements PhotoRepository {
     this.photos = [];
   }
 
-  async getAll(): Promise<Photography[]> {
-    return this.photos;
+  async getById(id: string): Promise<Photography | undefined> {
+    return this.photos.find((photo) => photo.identifier === id);
   }
 
   async save(photo: Photography): Promise<void> {
