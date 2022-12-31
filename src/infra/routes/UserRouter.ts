@@ -17,10 +17,6 @@ export default class UserRouter {
     this.fileHandler = new FileHandler();
     this.userController = new UserController(userRepository, photoRepository);
 
-    this.route.get('/user', async (req: Request, res: Response, _next: NextFunction) => {
-      this.userController.getAll(req, res);
-    });
-
     this.route.post('/user', async (req: Request, res: Response, _next: NextFunction) => {
       this.userController.create(req, res);
     });
