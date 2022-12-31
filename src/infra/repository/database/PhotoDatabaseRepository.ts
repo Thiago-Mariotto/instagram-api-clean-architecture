@@ -5,8 +5,8 @@ import Connection from '../../database/Connection';
 export default class PhotoDatabaseRepository implements PhotoRepository {
 
   constructor(readonly connection: Connection) { }
-  getById(id: string): Promise<Photography[]> {
-    throw new Error('Method not implemented.');
+  async getById(id: string): Promise<Photography | undefined> {
+    return await this.connection.query('SELECT * FROM photos WHERE id = ?', [id]);
   }
 
   async save(photo: Photography): Promise<void> {
