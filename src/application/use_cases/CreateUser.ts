@@ -7,7 +7,7 @@ export default class CreateUser {
 
   async execute(input: Input) {
     const user = new User(input.username, input.email, input.password);
-    this.userRepository.saveUser(user);
+    await this.userRepository.saveUser(user);
   }
 }
 
