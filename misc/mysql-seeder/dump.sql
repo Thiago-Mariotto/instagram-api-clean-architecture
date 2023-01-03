@@ -8,7 +8,7 @@ CREATE TABLE users (
   id VARCHAR(64) PRIMARY KEY NOT NULL UNIQUE,
   username VARCHAR(25) NOT NULL UNIQUE,
   email VARCHAR(60) NOT NULL UNIQUE,
-  password VARCHAR(30) NOT NULL
+  password VARCHAR(64) NOT NULL
 );
 
 INSERT INTO users (id, username, email, password) 
