@@ -17,14 +17,14 @@ export default class UserRouter {
     this.fileHandler = new FileHandler();
     this.userController = new UserController(userRepository, photoRepository);
 
-    this.route.post('/user', async (req: Request, res: Response, _next: NextFunction) => {
-      this.userController.create(req, res);
+    this.route.post('/user', async (req: Request, res: Response, next: NextFunction) => {
+      this.userController.create(req, res, next);
     });
 
     this.route.post('/user/:id/upload',
       this.fileHandler.upload().single('file'),
-      async (req: Request, res: Response, _next: NextFunction) => {
-        this.userController.uploadFile(req, res);
+      async (req: Request, res: Response, next: NextFunction) => {
+        this.userController.uploadFile(req, res, next);
       });
   }
 }
