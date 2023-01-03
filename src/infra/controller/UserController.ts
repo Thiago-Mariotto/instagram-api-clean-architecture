@@ -1,8 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import CreateUser from '../../application/use_cases/CreateUser';
 import SavePhotography from '../../application/use_cases/SavePhotography';
 import Photography from '../../domain/entity/Photography';
-import User from '../../domain/entity/User';
 import PhotoRepository from '../../domain/repository/PhotographyRepository';
 import UserRepository from '../../domain/repository/UserRepository';
 import FileHandler from '../implementations/FileHandler';
@@ -24,19 +23,17 @@ export default class UserController {
     this.s3Storage = new S3Storage();
   }
 
-  public async create(req: Request, res: Response): Promise<Response> {
-    const input = req.body;
-    const user = new User(input.username, input.email, input.password);
+  public async create(req: Request, res: Response, next: NextFunction) {
+    const { username, email, password } = req.body;
     try {
-      await this.createUser.execute(user);
+      await this.createUser.execute({ username, email, password });
       return res.status(201).json({ message: 'Success' });
     } catch (error: any) {
-      console.log(`Error creating user ${error.message}`);
-      return res.status(400).json({ message: error.message || 'Unexpected error' });
+      next(error);
     }
   }
 
-  public async uploadFile(req: Request, res: Response): Promise<Response> {
+  public async uploadFile(req: Request, res: Response, next: NextFunction) {
     try {
       const { tmpFileName, tmpFilePath } = req.body;
       const ownerId = req.params.id;
@@ -47,8 +44,7 @@ export default class UserController {
       this.fileHandler.removeUploadedFile(tmpFilePath);
       return res.status(201).json({ message: 'Success' });
     } catch (error: any) {
-      console.log(`Error uploading file: ${error.message}`);
-      return res.status(400).json({ message: error.message || 'Unexpected error' });
+      next(error);
     }
   }
 }
