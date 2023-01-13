@@ -1,5 +1,5 @@
-import Photography from '../../../domain/entity/Photography';
-import PhotoRepository from '../../../domain/repository/PhotographyRepository';
+import Photography from '../../../domain/entity/Photo';
+import PhotoRepository from '../../../domain/repository/PhotoRepository';
 import Connection from '../../database/Connection';
 
 export default class PhotoDatabaseRepository implements PhotoRepository {

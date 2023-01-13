@@ -1,5 +1,5 @@
 import Photo from '../../domain/entity/Photo';
-import PhotoRepository from '../../domain/repository/PhotographyRepository';
+import PhotoRepository from '../../domain/repository/PhotoRepository';
 
 export default class SavePhoto {
 

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import PhotoRepository from '../../domain/repository/PhotographyRepository';
+import PhotoRepository from '../../domain/repository/PhotoRepository';
 import UserRepository from '../../domain/repository/UserRepository';
 import UserController from '../controller/UserController';
 import FileHandler from '../implementations/FileHandler';
