@@ -1,6 +1,6 @@
 import Identifier from './Identifier';
 
-export default class Photography {
+export default class Photo {
   identifier: string;
   ownerId: string;
   active: boolean;
