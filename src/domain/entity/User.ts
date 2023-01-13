@@ -26,7 +26,7 @@ export default class User {
       .min(this.MIN_PASSWORD_LENGTH)
       .max(this.MAX_PASSWORD_LENGTH);
     const { error } = PWDSCHEMA.validate(password);
-    if (error) { console.log(error); throw Error('Invalid password'); }
+    if (error) { throw Error('Invalid password'); }
   }
 
   private encryptPass(password: string) {
