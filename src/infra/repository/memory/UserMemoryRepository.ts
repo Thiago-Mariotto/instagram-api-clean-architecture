@@ -6,6 +6,9 @@ export default class UserMemoryRepository implements UserRepository {
   constructor() {
     this.users = [];
   }
+  getUserByEmailOrUsername(email: string, username: string): Promise<User | undefined> {
+    throw new Error('Method not implemented.');
+  }
   updateUser(user: User): Promise<void> {
     throw new Error('Method not implemented.');
   }
@@ -18,7 +21,7 @@ export default class UserMemoryRepository implements UserRepository {
   }
 
   async getUserById(id: string): Promise<User | undefined> {
-    return this.users.find(u => u.id === id);
+    return this.users.find(u => u.identifier === id);
   }
 
   async saveUser(user: User): Promise<void> {
