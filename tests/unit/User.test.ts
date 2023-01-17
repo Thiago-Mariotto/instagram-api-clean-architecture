@@ -4,13 +4,13 @@ import User from "../../src/domain/entity/User";
 describe('User', function () {
   it('É possível registrar um User com sucesso', function () {
     const user = new User('John', 'john@email.com', '123456');
-    expect(user).to.be.contains.all.keys(['username', 'email', 'password']);
+    expect(user).to.be.contains.all.keys(['identifier', 'username', 'email', 'password']);
   });
 
   it('Deve ser possível recuperar informações de uma pessoa usuária', function () {
     const newUser = new User('John', 'john@email.com', '123456');
     const user = newUser.getUser();
-    expect(user).to.be.contains.all.keys(['username', 'email']);
+    expect(user).to.be.contains.all.keys(['identifier', 'username', 'email']);
   });
 
   it('Não é possível registrar um User com password menor de 6 caracteres', function () {
