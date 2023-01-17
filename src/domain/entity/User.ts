@@ -3,7 +3,7 @@ import HashPassword from './HashPassword';
 import Identifier from './Identifier';
 
 export default class User {
-  readonly id: string;
+  readonly identifier: string;
 
   private username: string;
   private email: string;
@@ -14,7 +14,7 @@ export default class User {
 
   constructor(username: string, email: string, password: string) {
     this.hashPassword = new HashPassword();
-    this.id = new Identifier().id;
+    this.identifier = new Identifier().id;
     this.username = username;
     this.email = email;
     this.validateFields(email, password);
@@ -49,6 +49,7 @@ export default class User {
 
   public getUser() {
     return {
+      identifier: this.identifier,
       username: this.username,
       email: this.email,
     }
