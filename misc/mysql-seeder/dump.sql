@@ -8,13 +8,13 @@ CREATE TABLE users (
   id VARCHAR(64) PRIMARY KEY NOT NULL UNIQUE,
   username VARCHAR(25) NOT NULL UNIQUE,
   email VARCHAR(60) NOT NULL UNIQUE,
-  password VARCHAR(64) NOT NULL
+  password VARCHAR(80) NOT NULL
 );
 
 INSERT INTO users (id, username, email, password) 
   VALUES 
-    ('bd7ea65b-882c-4970-95fb-de981ddbfa66', 'ze', 'ze@mail.com', '123456'),
-    ('d47f4831-1307-4482-9ebd-9bc4f20e51ef', 'ma', 'ma@mail.com', '123456');
+    ('bd7ea65b-882c-4970-95fb-de981ddbfa66', 'zezinho', 'ze@mail.com', '$2a$10$U1c2VW8sKYlCVZzzUQ4KU.HzMk8y0l4/d/.Ct/Wo7.dE/Df43VyKG'),
+    ('d47f4831-1307-4482-9ebd-9bc4f20e51ef', 'maria', 'ma@mail.com', '$2a$10$U1c2VW8sKYlCVZzzUQ4KU.HzMk8y0l4/d/.Ct/Wo7.dE/Df43VyKG');
 
 CREATE TABLE photos (
   id VARCHAR(64) PRIMARY KEY NOT NULL UNIQUE,
