@@ -9,6 +9,7 @@ export default class PhotoDatabaseRepository implements PhotoRepository {
       return await this.connection.query('SELECT * FROM photos WHERE id = ?', [id]);
     } catch (error: any) {
       console.log(`Error on SELECT Photos, ${error.message}`);
+      throw { name: 'ServiceUnavailable' }
     }
   }
   async save(photo: Photography): Promise<void> {
@@ -17,6 +18,7 @@ export default class PhotoDatabaseRepository implements PhotoRepository {
         [photo.identifier, photo.ownerId, photo.active, photo.url, photo.createdAt]);
     } catch (error: any) {
       console.log(`Error on SELECT Photos, ${error.message}`);
+      throw { name: 'ServiceUnavailable' }
     }
   }
 }
