@@ -35,7 +35,7 @@ export default class FileHandler {
 
   public removeUploadedFile(filePath: string) {
     fs.unlink(filePath, (err) => {
-      if (err) throw new Error('failed to remove uploaded file');
+      if (err) throw { name: 'InternalError' }
     });
   }
 }
