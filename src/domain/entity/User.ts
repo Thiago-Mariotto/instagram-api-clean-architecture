@@ -79,7 +79,6 @@ export default class User {
   }
 
   public set password(value: string) {
-    this.passIsValid(value);
     this._password = value;
   }
 }
