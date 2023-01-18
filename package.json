@@ -45,6 +45,8 @@
     "dev": "ts-node-dev ./src/index.ts",
     "start": "node .",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "test-unit": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/unit/*.ts'",
+    "test-integration": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/integration/*.ts' --exit",
     "test-coverage": "nyc npm run test"
   }
 }
